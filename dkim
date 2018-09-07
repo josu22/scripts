@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mkdir -p /etc/opendkim/keys/tudominio.es
+cd /etc/opendkim/keys/tudominio.es
+opendkim-genkey -d tudominio.es -s mail
+chown -Rv opendkim:opendkim /etc/opendkim/keys/tudominio.es
+chmod -v u=rw,go-rwx *
+
+echo "tudominio.es tudominio.es:mail:/etc/opendkim/keys/tudominio.es/mail.private" >> /etc/opendkim/KeyTable
+echo "*@tudominio.es tudominio.es" >> /etc/opendkim/SigningTable
+echo "tudominio.es" >> /etc/opendkim/TrustedHosts
+echo "mail.tudominio.es" >> /etc/opendkim/TrustedHosts

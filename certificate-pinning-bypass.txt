@@ -1,0 +1,30 @@
+Pre-requisitos:
+pip3 install objection
+
+frida-server android-arm
+https://github.com/frida/frida/releases
+
+frida-server-xx.x.x-android-arm.xz
+
+adb push frida-server-xx.x.x-android-arm.xz /data/local/tmp/
+
+adb shell "chmod 755 /data/local/tmp/frida-server-xx.x.x-android-arm.xz"
+
+adb shell 
+su 
+
+/data/local/tmp/frida-server-xx.x.x-android-arm.xz 
+
+una vez frida-server esté en ejecución, en una nueva terminal...
+
+frida-ps -U
+
+identificamos el proceso de la aplicación que queremos bypassear el certificate pinning.
+
+p.ej. com.android.bluetooth
+
+objection --gadget com.renfe.renfecercanias explore
+
+android sslpinning disable
+
+y ya interceptamos peticiones peticiones https!

@@ -23,7 +23,7 @@ identificamos el proceso de la aplicación que queremos bypassear el certificate
 
 p.ej. com.android.bluetooth
 
-objection --gadget com.renfe.renfecercanias explore
+objection --gadget com.android.bluetooth explore
 
 android sslpinning disable
 
